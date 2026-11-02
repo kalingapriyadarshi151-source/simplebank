@@ -14,19 +14,16 @@ jobs:
 
     services:
       postgresql:
-        image: postgres:16
+        image: postgres:16-alpine
         env:
-          POSTGRES_USER: pg_user
-          POSTGRES_PASSWORD: password
+          POSTGRES_USER: root
+          POSTGRES_PASSWORD: secret
           POSTGRES_DB: simple_bank
-          PGUSER: pg_user
-          PGDATABASE: simple_bank
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-          --health-start-period 10s
         ports: ["5432:5432"]
 
     steps:
@@ -38,7 +35,7 @@ jobs:
         go-version: '1.27'
       id: go 
     
-    - name: checkout code into the go module directory...
+    - name: checkout code into the go module directory
       uses: actions/checkout@v4
 
     - name: install golang-migrate
