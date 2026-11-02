@@ -14,7 +14,7 @@ jobs:
 
     services:
       postgresql:
-        image: postgres:18
+        image: postgres18
         env:
           POSTGRES_USER: pg_user
           POSTGRES_PASSWORD: password
