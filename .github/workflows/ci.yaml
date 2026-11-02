@@ -20,6 +20,7 @@ jobs:
           POSTGRES_PASSWORD: password
           POSTGRES_DB: simple_bank
         options: >-
+          --health-cmd "pg_isready -h localhost -U pg_user -d simple_bank"
           --health-cmd pg_isready
           --health-interval 10s
           --health-timeout 5s
